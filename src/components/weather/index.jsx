@@ -15,6 +15,8 @@ export default function Weather() {
 
       const data = await response.json();
       if (data) {
+        // Convert temperature from Kelvin to Celsius
+        data.main.temp = (data.main.temp - 273.15).toFixed(2);
         setWeatherData(data);
         setLoading(false);
       }
@@ -38,7 +40,7 @@ export default function Weather() {
   }
 
   useEffect(() => {
-    fetchWeatherData("bangalore");
+    fetchWeatherData("Pune");
   }, []);
 
   console.log(weatherData);
@@ -62,7 +64,7 @@ export default function Weather() {
           <div className="date">
             <span>{getCurrentDate()}</span>
           </div>
-          <div className="temp">{weatherData?.main?.temp}</div>
+          <div className="temp">{weatherData?.main?.temp}°C</div>
           <p className="description">
             {weatherData && weatherData.weather && weatherData.weather[0]
               ? weatherData.weather[0].description
