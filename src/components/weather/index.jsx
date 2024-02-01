@@ -43,7 +43,7 @@ export default function Weather() {
     fetchWeatherData("Pune");
   }, []);
 
-  console.log(weatherData);
+  // console.log(weatherData);
 
   return (
     <div>
